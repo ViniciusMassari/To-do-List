@@ -4,6 +4,8 @@ const tasksContainer = document.querySelector(".tasks-container");
 
 const events = ["click", "touchlist"];
 
+localStorage.tasks;
+
 function handleTaskCreator(event) {
   event.preventDefault();
   createTask(input.value);
