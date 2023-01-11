@@ -9,26 +9,46 @@ function handleTaskCreator(event) {
   createTask(input.value);
 }
 
-function setTasks() {
-  const tasksListString = localStorage.tasks;
-  if (tasksListString !== "") {
-    const taskListArray = tasksListString.split(",");
+const tasksList = localStorage.tasks;
 
-    taskListArray.forEach((task) => {
-      if (task !== undefined && task !== "") {
-        const div = document.createElement("div");
-        div.classList.add("task");
-        div.innerHTML = ` <p>${task}</p>
-       <i class="bi bi-trash3-fill"></i>`;
-        tasksContainer.appendChild(div);
-      }
-    });
-  } else {
-    return;
-  }
+function setTasks() {
+  const taskListArray = tasksList.split(",");
+  taskListArray.forEach((task) => {
+    if (task !== "undefined" && task !== "") {
+      const div = document.createElement("div");
+      div.classList.add("task");
+      div.innerHTML = ` <p>${task}</p>
+           <i class="bi bi-trash3-fill"></i>`;
+      tasksContainer.appendChild(div);
+    }
+  });
 }
 
-setTasks();
+if (tasksList !== undefined) {
+  setTasks();
+} else {
+  localStorage.setItem("tasks", "");
+}
+
+// function setTasks() {
+//   const tasksListString = localStorage.tasks;
+//   if (tasksListString !== "" || tasksListString !== undefined) {
+//     const taskListArray = tasksListString.split(",");
+//     taskListArray.forEach((task) => {
+//       if (task !== undefined && task !== "") {
+//         const div = document.createElement("div");
+//         div.classList.add("task");
+//         div.innerHTML = ` <p>${task}</p>
+//        <i class="bi bi-trash3-fill"></i>`;
+//         tasksContainer.appendChild(div);
+//       }
+//     });
+//   } else {
+//     return;
+//   }
+// }
+
+// setTasks();
 
 function saveTaskOnMemory(value) {
   localStorage.tasks += `,${value}`;
