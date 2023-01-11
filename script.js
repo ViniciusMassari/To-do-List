@@ -4,8 +4,6 @@ const tasksContainer = document.querySelector(".tasks-container");
 
 const events = ["click", "touchlist"];
 
-localStorage.tasks;
-
 function handleTaskCreator(event) {
   event.preventDefault();
   createTask(input.value);
@@ -13,17 +11,21 @@ function handleTaskCreator(event) {
 
 function setTasks() {
   const tasksListString = localStorage.tasks;
-  const taskListArray = tasksListString.split(",");
+  if (tasksListString !== "") {
+    const taskListArray = tasksListString.split(",");
 
-  taskListArray.forEach((task) => {
-    if (task !== undefined && task !== "") {
-      const div = document.createElement("div");
-      div.classList.add("task");
-      div.innerHTML = ` <p>${task}</p>
-     <i class="bi bi-trash3-fill"></i>`;
-      tasksContainer.appendChild(div);
-    }
-  });
+    taskListArray.forEach((task) => {
+      if (task !== undefined && task !== "") {
+        const div = document.createElement("div");
+        div.classList.add("task");
+        div.innerHTML = ` <p>${task}</p>
+       <i class="bi bi-trash3-fill"></i>`;
+        tasksContainer.appendChild(div);
+      }
+    });
+  } else {
+    return;
+  }
 }
 
 setTasks();
