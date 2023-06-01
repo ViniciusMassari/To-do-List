@@ -4,13 +4,17 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "dev": "webpack --mode development --watch --entry ./script.js -o ./",
-    "build": "webpack --mode production --entry ./script.js -o ./"
+    "dev": "webpack --mode development --watch ",
+    "build": "webpack --mode production "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.0.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   }
